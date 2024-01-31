@@ -1,0 +1,176 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API Document Server of Project 1",
+    "version": "1.0.0",
+    "title": "Swagger UI QLTV",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "quan20028a3kb@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "User",
+      "description": "Everything about your User",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    },
+    {
+      "name": "Book",
+      "description": "Everything about Book",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    },
+    {
+      "name": "Place",
+      "description": "Operations about place",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    },
+    {
+      "name": "cardStudent",
+      "description": "Operations about card student",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    }
+  ],
+  "paths": {
+    "/users/login": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Login User",
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "produces": [
+          "application/json",
+          "application/xml"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "data",
+            "description": "User info",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "mssv": {
+                  "type": "string",
+                  "example": "20002000"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "12345678"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login success"
+          },
+          "401": {
+            "description": "data input is invalid"
+          }
+        }
+      }
+    }
+  },
+  "/users/getAllStudent": {
+    "post": {
+      "tags": [
+        "User"
+      ],
+      "summary": "get all student",
+      "consumes": [
+        "application/json",
+        "application/xml"
+      ],
+      "produces": [
+        "application/json",
+        "application/xml"
+      ],
+      "responses": {
+        "200": {
+          "description": "get all student success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Pet"
+                  }
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Pet"
+                  }
+                }
+              }
+            }
+        },
+        "401": {
+          "description": "data input is invalid"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Users": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "example": "Trịnh Hoàng Quân"
+        },
+        "mssv": {
+          "type": "string",
+          "example": "20204850"
+        },
+        "phoneNumber" : {
+          "type": "string",
+          "example": "0327393234"
+        },
+        "email": {
+          "type": "string",
+          "example": "quanbk@gmail.com"
+        },
+        "isDelete": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "xml": {
+        "name": "Pet"
+      }
+    }
+  }
+}
